@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ElectrificationExpertClock (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ElectrificationExpertClock (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
