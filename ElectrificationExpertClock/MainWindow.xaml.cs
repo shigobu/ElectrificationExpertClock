@@ -30,8 +30,8 @@ namespace ElectrificationExpertClock
     {
 
         AppWindow appWindow;
-        int Width = 220;
-        int Height = 200;
+        int Width = 200;
+        int Height = 190;
         private DispatcherTimer dispatcherTimer;
 
 
@@ -43,8 +43,15 @@ namespace ElectrificationExpertClock
             WindowId myWndId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
             appWindow = AppWindow.GetFromWindowId(myWndId);
 
-            appWindow.Resize(new SizeInt32(220, 200));
+            appWindow.Resize(new SizeInt32(Width, Height));
             SubClassing();
+
+            var op = OverlappedPresenter.Create();
+            op.IsMaximizable = false;
+            op.IsMinimizable = false;
+            op.IsResizable = false;
+            op.IsAlwaysOnTop = true;
+            appWindow.SetPresenter(op);
 
             dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
@@ -68,7 +75,7 @@ namespace ElectrificationExpertClock
             }
             else
             {
-                season.Text = "その他季";
+                season.Text = "その他の季節";
             }
 
             if (10 <= now.Hour && now.Hour < 17)
